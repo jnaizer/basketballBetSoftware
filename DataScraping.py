@@ -1,3 +1,10 @@
+import os, sys, stat
+
+# checks and installs required libraries onto local computer
+os.system("pip install requests")
+os.system("pip install beautifulsoup4")
+os.system("pip install pandas")
+
 from urllib.request import urlopen
 import random
 import requests
