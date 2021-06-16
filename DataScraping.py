@@ -16,7 +16,7 @@ teams = {"MIL" : "Milwaukee Bucks", "BRK" : "Brooklyn Nets", "WAS" : "Washington
  "CLE" : "Cleveland Cavaliers", "CHI" : "Chicago Bulls", "GSW" : "Golden State Warriors", "NYK" : "New York Knicks"}
 
 # list of the years 2015 through 2021
-years = list(range(2015, 2021))
+years = list(range(2015, 2022))
 
 # loop through each key (abbreviation) in the teams dictionary
 for key in teams:
@@ -55,7 +55,7 @@ for key in teams:
             os.makedirs(dirPath)
         
         # this gives the python program permission to edit the file
-        os.chmod(dirPath, stat.S_IRWXU)
+        # os.chmod(dirPath, stat.S_IRWXU)
 
         # converts the stats dataframe into a # separated file and stores it at file location
         stats.to_csv(filePath, sep="#", index=False)
@@ -102,8 +102,7 @@ for key in teams:
                 f.write(result + "\n")
         
         # Assures user the program is still running
-        print("Running")
+        print(teams[key] + " " + str(year))
 
 # notifies user that the program is finished
 print("Complete!")
-
