@@ -52,10 +52,10 @@ for key in teams:
         stats.head(10)
         
         # creating the directory path for the file with the value of the key in teams so it is the full name
-        dirPath = "Python Projects/BasketballBetting/" + str(teams[key])
+        dirPath = "Python Projects/BasketballBetting/Team Schedules/" + str(teams[key])
 
         # creating the file path
-        filePath = "Python Projects/BasketballBetting/" + str(teams[key]) + "/" + str(year)
+        filePath = "Python Projects/BasketballBetting/Team Schedules/" + str(teams[key]) + "/" + str(year)
 
         # if the directory is not made yet, ,make it (this should only execute the first time you run the program)
         if (not os.path.isdir(dirPath)):
