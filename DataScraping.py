@@ -4,6 +4,7 @@ import os, sys, stat
 os.system("pip install requests")
 os.system("pip install beautifulsoup4")
 os.system("pip install pandas")
+os.system("pip install progressbar")
 
 from urllib.request import urlopen
 import random
@@ -13,6 +14,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 pd.set_option('display.max_colwidth', 500)
 import os, sys, stat
+from progressbar import ProgressBar
 
 # dictionary that stores the abbreviation as the key and the full name as the value
 teams = {"MIL" : "Milwaukee Bucks", "BRK" : "Brooklyn Nets", "WAS" : "Washington Wizards", "UTA" : "Utah Jazz", "POR" : "Portland Trail Blazers",
@@ -25,8 +27,11 @@ teams = {"MIL" : "Milwaukee Bucks", "BRK" : "Brooklyn Nets", "WAS" : "Washington
 # list of the years 2015 through 2021
 years = list(range(2015, 2022))
 
+# creating a progress bar to display
+pbar = ProgressBar()
+
 # loop through each key (abbreviation) in the teams dictionary
-for key in teams:
+for key in pbar(teams):
 
     # loop through each year in the years list
     for year in years:
@@ -106,7 +111,7 @@ for key in teams:
                 f.write(result + "\n")
         
         # Assures user the program is still running
-        print(teams[key] + " " + str(year))
+        # print(teams[key] + " " + str(year))
 
 # notifies user that the program is finished
 print("Complete!")
