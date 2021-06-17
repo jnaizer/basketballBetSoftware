@@ -36,7 +36,7 @@ for key in teams:
         # this is the HTML code from the given URL that we will be looking through
         html = urlopen(url)
         # i fucked up my soup
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html, features="html.parser")
         # use findALL() to get the column headers
         soup.findAll('tr', limit=2)
         # use getText() to extract the text we need into a list
@@ -55,14 +55,11 @@ for key in teams:
         dirPath = "Python Projects/BasketballBetting/Team Schedules/" + str(teams[key])
 
         # creating the file path
-        filePath = "Python Projects/BasketballBetting/Team Schedules/" + str(teams[key]) + "/" + str(year)
+        filePath = "Python Projects/BasketballBetting/Team Schedules/" + str(teams[key]) + "/" + str(year) + ".txt"
 
-        # if the directory is not made yet, ,make it (this should only execute the first time you run the program)
+        # if the directory is not made yet, make it (this should only execute the first time you run the program)
         if (not os.path.isdir(dirPath)):
             os.makedirs(dirPath)
-        
-        # this gives the python program permission to edit the file
-        # os.chmod(dirPath, stat.S_IRWXU)
 
         # converts the stats dataframe into a # separated file and stores it at file location
         stats.to_csv(filePath, sep="#", index=False)
