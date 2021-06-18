@@ -93,4 +93,6 @@ for year in pbar(years):
             
             # writes the ratingsHashSeparated with the respective team to the file with the last "#" cut off
             f.write(teams[key] + "#" + ratingsHashSeparated.rstrip(ratingsHashSeparated[-1]) + "\n")
+
+# output for user
 print("Complete!")
