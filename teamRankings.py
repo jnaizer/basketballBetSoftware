@@ -50,6 +50,7 @@ if (not os.path.isdir(dirPath)):
     os.makedirs(dirPath)
 
 # output for user
+print("\n")
 print("Fetching team ratings...")
 
 # loop through each year in the years list
