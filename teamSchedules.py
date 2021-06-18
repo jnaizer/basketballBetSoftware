@@ -32,8 +32,7 @@ years = list(range(2015, 2022))
 pbar = ProgressBar()
 
 # output for user
-print("\n")
-print("Fetching team schedules...")
+print("\nFetching team schedules...")
 
 # loop through each key (abbreviation) in the teams dictionary
 for key in pbar(teams):
