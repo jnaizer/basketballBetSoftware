@@ -1,6 +1,7 @@
 import os, sys, stat
 
 # checks and installs required libraries onto local computer
+print("Installing libraries...")
 os.system("pip install requests")
 os.system("pip install beautifulsoup4")
 os.system("pip install pandas")
@@ -29,6 +30,10 @@ years = list(range(2015, 2022))
 
 # creating a progress bar to display
 pbar = ProgressBar()
+
+# output for user
+print("\n")
+print("Fetching team schedules...")
 
 # loop through each key (abbreviation) in the teams dictionary
 for key in pbar(teams):
@@ -109,9 +114,6 @@ for key in pbar(teams):
                 result = "#".join(list)
                 # write the edited string back to the same file
                 f.write(result + "\n")
-        
-        # Assures user the program is still running
-        # print(teams[key] + " " + str(year))
 
 # notifies user that the program is finished
 print("Complete!")
