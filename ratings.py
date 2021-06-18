@@ -16,15 +16,9 @@ html = urlopen(url)
 # i fucked up my soup
 soup = BeautifulSoup(html, features="html.parser")
 
-# gets the html code for the summary box at top of page and makes a list of its children
-metaList = list(soup.find("div", id = "meta").children)
-#print(metaList)
-
-# gets the html code for the summary values and makes a list of its children
-dataList = list(metaList[3])
-#print(dataList)
-
-# gets the ratings and prints the text of the html code
-p = dataList[19]
-#print(p)
-print(p.getText())
+summaryList = list(soup.findAll("p"))
+# print(summaryList)
+for data in summaryList:
+    text = data.getText()
+    if "Rtg" in text:
+        print(text)
