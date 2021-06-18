@@ -13,12 +13,25 @@ from progressbar import ProgressBar
 url = "https://www.basketball-reference.com/teams/UTA/2021.html"
 # this is the HTML code from the given URL that we will be looking through
 html = urlopen(url)
-# i fucked up my soup
+# soup object for searching through html code
 soup = BeautifulSoup(html, features="html.parser")
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+ratingsHashSeparated = ""
 summaryList = list(soup.findAll("p"))
 # print(summaryList)
 for data in summaryList:
     text = data.getText()
     if "Rtg" in text:
-        print(text)
+        textList = text.split()
+        for str in textList:
+            if is_number(str):
+                ratingsHashSeparated += str + "#"
+print(ratingsHashSeparated.rstrip(ratingsHashSeparated[-1]))
+        
