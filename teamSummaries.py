@@ -1,3 +1,9 @@
+#####################################
+# Change the start year to different years to make the program run faster.
+# Valid values are from 2015 to 2021
+startYear = 2020
+#####################################
+
 import os, sys, stat
 
 # checks and installs required libraries onto local computer
@@ -7,6 +13,7 @@ os.system("pip install beautifulsoup4")
 os.system("pip install pandas")
 os.system("pip install progressbar")
 
+from datetime import date
 from urllib.request import urlopen
 import random
 import requests
@@ -25,8 +32,9 @@ teams = {"MIL" : "Milwaukee Bucks", "BRK" : "Brooklyn Nets", "WAS" : "Washington
  "PHI" : "Philadelphia 76ers", "OKC" : "Oklahoma City Thunder", "SAC" : "Sacramento Kings", "ORL" : "Orlando Magic", "DET" : "Detroit Pistons",
  "CLE" : "Cleveland Cavaliers", "CHI" : "Chicago Bulls", "GSW" : "Golden State Warriors", "NYK" : "New York Knicks"}
 
-# list of the years 2015 through 2021
-years = list(range(2015, 2022))
+# list of the years startYear through endYear
+currentDate = date.today()
+years = list(range(startYear, currentDate.year + 1))
 
 # creating a progress bar to display
 pbar = ProgressBar()
@@ -39,24 +47,21 @@ def is_number(s):
     except ValueError:
         return False
 
-# list of the years 2015 through 2021
-years = list(range(2015, 2022))
-
 # creating the directory path for the file with the value of the key in teams so it is the full name
-dirPath = "Python Projects/BasketballBetting/Team Ratings"
+dirPath = "Python Projects/BasketballBetting/Team Summaries"
 
 # if the directory is not made yet, make it (this should only execute the first time you run the program)
 if (not os.path.isdir(dirPath)):
     os.makedirs(dirPath)
 
 # output for user
-print("\nFetching team ratings...")
+print("\nFetching team summaries...")
 
 # loop through each year in the years list
 for year in pbar(years):
 
     # creating the file path
-    filePath = "Python Projects/BasketballBetting/Team Ratings/" + str(year) + ".txt"
+    filePath = "Python Projects/BasketballBetting/Team Summaries/" + str(year) + ".txt"
 
     # opens designated file path
     with open(filePath, "w") as f:
@@ -110,7 +115,7 @@ for year in pbar(years):
                             srsAndPaceHashSeparated += string + "#"
 
             
-            # writes the ratingsHashSeparated with the respective team to the file with the last "#" cut off
+            # writes the hash separated strings to the file with the last "#" cut off
             f.write(teams[key] + "#" + ratingsHashSeparated + pointsHashSeparated + srsAndPaceHashSeparated.rstrip(srsAndPaceHashSeparated[-1]) + "\n")
 
 # output for user
