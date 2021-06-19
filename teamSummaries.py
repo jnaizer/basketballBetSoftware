@@ -62,7 +62,7 @@ for year in pbar(years):
     with open(filePath, "w") as f:
 
         # writes the column headers to the file
-        f.write("Team Name#Off Rtg#Def Rtg#Net Rtg" + "\n")
+        f.write("Team Name#Off Rtg#Def Rtg#Net Rtg#PTS/G#Opp PTS/G#SRS#Pace" + "\n")
 
         # loops through every team in the dictionary
         for key in teams:
@@ -74,8 +74,10 @@ for year in pbar(years):
             # i fucked up my soup
             soup = BeautifulSoup(html, features="html.parser")
 
-            # string that we will append the ratings to with a # separator
+            # strings that we will append the information to and write to file
             ratingsHashSeparated = ""
+            pointsHashSeparated = ""
+            srsAndPaceHashSeparated = ""
             # this is the list of all <p>"text"</p> in the html code
             summaryList = list(soup.findAll("p"))
 
@@ -90,9 +92,26 @@ for year in pbar(years):
                     for string in textList:
                         if is_number(string):
                             ratingsHashSeparated += string + "#"
+                # if the <p>"text"</p> has the points per game in it
+                if "PTS/G" in text:
+                    # split the text into a list
+                    textList = text.split()
+                    # if the string is a number, append it to the ratingsHashSeparated variable
+                    for string in textList:
+                        if is_number(string):
+                            pointsHashSeparated += string + "#"
+                # if the <p>"text"</p> has SRS and pace in it
+                if "SRS" in text:
+                    # split the text into a list
+                    textList = text.split()
+                    # if the string is a number, append it to the ratingsHashSeparated variable
+                    for string in textList:
+                        if is_number(string):
+                            srsAndPaceHashSeparated += string + "#"
+
             
             # writes the ratingsHashSeparated with the respective team to the file with the last "#" cut off
-            f.write(teams[key] + "#" + ratingsHashSeparated.rstrip(ratingsHashSeparated[-1]) + "\n")
+            f.write(teams[key] + "#" + ratingsHashSeparated + pointsHashSeparated + srsAndPaceHashSeparated.rstrip(srsAndPaceHashSeparated[-1]) + "\n")
 
 # output for user
 print("Complete!")
