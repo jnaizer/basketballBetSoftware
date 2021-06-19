@@ -1,3 +1,9 @@
+#####################################
+# Change the start year to different years to make the program run faster.
+# Valid values are from 2015 to 2021
+startYear = 2015
+#####################################
+
 import os, sys, stat
 
 # checks and installs required libraries onto local computer
@@ -7,6 +13,7 @@ os.system("pip install beautifulsoup4")
 os.system("pip install pandas")
 os.system("pip install progressbar")
 
+from datetime import date
 from urllib.request import urlopen
 import random
 import requests
@@ -25,8 +32,9 @@ teams = {"MIL" : "Milwaukee Bucks", "BRK" : "Brooklyn Nets", "WAS" : "Washington
  "PHI" : "Philadelphia 76ers", "OKC" : "Oklahoma City Thunder", "SAC" : "Sacramento Kings", "ORL" : "Orlando Magic", "DET" : "Detroit Pistons",
  "CLE" : "Cleveland Cavaliers", "CHI" : "Chicago Bulls", "GSW" : "Golden State Warriors", "NYK" : "New York Knicks"}
 
-# list of the years 2015 through 2021
-years = list(range(2015, 2022))
+# list of the years startYear through endYear
+currentDate = date.today()
+years = list(range(startYear, currentDate.year + 1))
 
 # creating a progress bar to display
 pbar = ProgressBar()
