@@ -118,5 +118,8 @@ for year in pbar(years):
             # writes the hash separated strings to the file with the last "#" cut off
             f.write(teams[key] + "#" + ratingsHashSeparated + pointsHashSeparated + srsAndPaceHashSeparated.rstrip(srsAndPaceHashSeparated[-1]) + "\n")
 
+    # closes file
+    f.close()
+
 # output for user
 print("Complete!")
