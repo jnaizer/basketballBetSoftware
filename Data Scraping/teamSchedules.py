@@ -121,6 +121,9 @@ for key in pbar(teams):
                 result = "#".join(list)
                 # write the edited string back to the same file
                 f.write(result + "\n")
+        
+        # closes file
+        f.close()
 
 # notifies user that the program is finished
 print("Complete!")
