@@ -103,7 +103,7 @@ for year in pbar(years):
             loc3 = tempText.find("</table>")
             text = (tempText[loc2:loc3])
 
-            string used for appending the data
+            # string used for appending the data
             teamMiscHashSeparated = ""
 
             # keeps track of how many rows we have read so far
