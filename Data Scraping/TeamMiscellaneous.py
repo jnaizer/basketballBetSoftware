@@ -113,12 +113,13 @@ for year in pbar(years):
             soup = BeautifulSoup(text, "html.parser")
 
             # creates a list of all the rows in the table
-            rows = soup.find_all("td")
+            columns = soup.find_all("td")
 
-            # iterates through each row and appends the data to teamMiscHashSeparated string
-            for row in rows:
+            # iterates through each column and appends the data to teamMiscHashSeparated string
+            for col in columns:
+              # if the col contents exists ( >= 1 ) and it is in the first row ( num < 22 )
               if (len(row.contents) >= 1) and (num < 22):
-                teamMiscHashSeparated += row.contents[0] + "#"
+                teamMiscHashSeparated += col.contents[0] + "#"
                 num += 1
             
             # writes the hash separated strings to the file with the last "#" cut off
