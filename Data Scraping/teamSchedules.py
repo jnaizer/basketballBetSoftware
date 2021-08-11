@@ -21,7 +21,6 @@ import time
 from bs4 import BeautifulSoup
 import pandas as pd
 pd.set_option('display.max_colwidth', 500)
-import os, sys, stat
 from progressbar import ProgressBar
 
 # dictionary that stores the abbreviation as the key and the full name as the value
