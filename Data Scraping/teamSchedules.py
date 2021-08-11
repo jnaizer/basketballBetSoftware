@@ -1,6 +1,6 @@
 #####################################
 # Change the start year to different years to make the program run faster.
-# Valid values are from 2015 to 2021
+# Valid values are from 2015 to current year
 startYear = 2015
 #####################################
 
