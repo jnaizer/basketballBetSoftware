@@ -73,7 +73,7 @@ for year in pbar(years):
     with open(filePath, "w") as f:
 
         # writes the column headers to the file
-        f.write("Team Name#W#L#PW#PL#MOV#SOS#SRS#ORtg#DRtg#Pace#FTr#3PAr#eFG%#TOV%#ORB%#FT/FGA#eFG%#TOV%#DRB%#FT/FGA#Arena#Attendance" + "\n")
+        f.write("Team Name#W#L#PW#PL#MOV#SOS#SRS#ORtg#DRtg#Pace#FTr#3PAr#Off eFG%#Off TOV%#Off ORB%#Off FT/FGA#Def eFG%#Def TOV%#Def DRB%#Def FT/FGA#Arena#Attendance" + "\n")
 
         # loops through every team in the dictionary
         for key in teams:
