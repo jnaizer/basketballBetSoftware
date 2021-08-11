@@ -118,7 +118,7 @@ for year in pbar(years):
             # iterates through each column and appends the data to teamMiscHashSeparated string
             for col in columns:
               # if the col contents exists ( >= 1 ) and it is in the first row ( num < 22 )
-              if (len(row.contents) >= 1) and (num < 22):
+              if (len(col.contents) >= 1) and (num < 22):
                 teamMiscHashSeparated += col.contents[0] + "#"
                 num += 1
             
