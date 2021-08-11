@@ -1,6 +1,6 @@
 #####################################
 # Change the start year to different years to make the program run faster.
-# Valid values are from 2015 to 2021
+# Valid values are from 2015 to current year
 startYear = 2015
 #####################################
 
@@ -80,10 +80,11 @@ for year in pbar(years):
 
             # constructing the url from the key and year
             url = "https://www.basketball-reference.com/teams/{}/{}.html".format(key, year)
-            # this is the HTML code from the given URL that we will be looking through
-
+            
             # suppresses the trivial terminal output
             with suppress_stdout():
+             
+                # this is the HTML code from the given URL that we will be looking through
                 html = wget.download(url)
 
             # complete html text
